@@ -1,27 +1,14 @@
 <?php
-session_start();
+require_once __DIR__ . '/../config/Database.php';
 
-require_once __DIR__ . '/../config/database.php';
-require_once __DIR__ . '/../src/controllers/UserController.php';
+$pdo = Database::connect();  // ✅ always a PDO object
 
-// Basic router
-$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+echo "<h1>Century Group Backend</h1>";
 
-switch ($uri) {
-    case '/':
-        echo "Welcome to My Project!";
-        break;
-    case '/register':
-        (new UserController($pdo))->register();
-        break;
-    case '/login':
-        (new UserController($pdo))->login();
-        break;
-    case '/logout':
-        (new UserController($pdo))->logout();
-        break;
-    default:
-        http_response_code(404);
-        echo "404 Not Found";
-        break;
+try {
+    $stmt = $pdo->query("SELECT COUNT(*) AS user_count FROM users");
+    $row = $stmt->fetch();
+    echo "✅ Database connected. Users in table: " . $row['user_count'];
+} catch (Exception $e) {
+    echo "❌ Query failed: " . $e->getMessage();
 }
