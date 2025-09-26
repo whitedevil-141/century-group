@@ -1,7 +1,17 @@
 <?php
-require_once __DIR__ . '/../config/Database.php';
 
-$pdo = Database::connect();  // ✅ always a PDO object
+$path = __DIR__ . '/../config/Database.php';
+if (!file_exists($path)) {
+    die("❌ Database.php not found at: $path");
+}
+
+require_once $path;
+
+if (!class_exists('Database')) {
+    die("❌ Database class not defined in Database.php");
+}
+
+$pdo = Database::connect();
 
 echo "<h1>Century Group Backend</h1>";
 
