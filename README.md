@@ -52,20 +52,7 @@ DB_USER=myuser
 DB_PASS=supersecret
 
 ```
-3. **Set up the database:**:
-```
-CREATE DATABASE myapp;
-USE myapp;
-
-CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-```
-3. **Run the project (using PHP’s built-in server)**:
+4. **Run the project (using PHP’s built-in server)**:
 ```
 php -S localhost:8000 -t public
 
