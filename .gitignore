@@ -1,0 +1,28 @@
+# Ignore vendor dependencies (installed via Composer)
+vendor/
+
+# Ignore environment variables
+.env
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignore IDE/editor specific files
+.idea/
+.vscode/
+*.swp
+
+# Ignore logs and cache
+*.log
+logs/
+cache/
+storage/
+tmp/
+
+# Ignore PHPUnit or testing artifacts
+.phpunit.result.cache
+
+# Ignore composer lock if you don’t want to lock deps (optional)
+# composer.lock

@@ -1,0 +1,38 @@
+# Auto-detect text files and normalize line endings
+* text=auto eol=lf
+
+# Treat PHP, JS, CSS, and HTML as text for diffing
+*.php  text diff=php
+*.js   text
+*.css  text
+*.html text
+
+# Ensure JSON, XML, and config files use LF
+*.json text
+*.xml  text
+*.yml  text
+*.yaml text
+*.ini  text
+*.env  text
+
+# Binary files (don’t diff them)
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.pdf  binary
+*.zip  binary
+*.gz   binary
+*.tar  binary
+*.ttf  binary
+*.woff binary
+*.woff2 binary
+
+# Exclude dev files from `git archive` (deployment packages)
+.gitattributes export-ignore
+.gitignore     export-ignore
+composer.json  export-ignore
+composer.lock  export-ignore
+phpunit.xml    export-ignore
+/tests/        export-ignore
