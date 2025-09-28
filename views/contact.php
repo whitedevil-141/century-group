@@ -5,7 +5,6 @@
 
 <body class="">
     <?php require __DIR__ . '/layouts/navbar.php'; ?>
-    <div class="container">
         <!--==============================
 Contact Area  
 ==============================-->
@@ -57,14 +56,14 @@ Contact Area
         </div><!--==============================
     Contact Area   
     ==============================-->
-        <div class="space contact-area-3 z-index-common" data-bg-src="assets/img/normal/booking_1_1.png" data-overlay="title" data-opacity="3">
+        <div class="space contact-area-3 z-index-common" >
             <div class="contact-bg-shape3-1 spin shape-mockup " data-bottom="5%" data-left="12%">
                 <img src="assets/img/shape/section_shape_2_1.jpg" alt="img">
             </div>
             <div class="container">
                 <div class="row gx-35">
                     <div class="col-lg-6">
-                        <div class="appointment-wrap2 bg-white me-xxl-5">
+                        <div class="appointment-wrap2 bg-white me-xxl-5" style="box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);">
                             <h2 class="form-title text-theme">Schedule a visit</h2>
                             <form action="mail.php" method="POST" class="appointment-form ajax-contact">
                                 <div class="row">
@@ -106,7 +105,7 @@ Contact Area
                 </div>
             </div>
         </div>
-    </div>
+        
     <!--==============================
 	Footer Area
 ==============================-->
