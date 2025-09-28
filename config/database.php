@@ -42,27 +42,27 @@ class Database {
                 role ENUM('admin','editor','hr') DEFAULT 'admin',
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )",
-            // Hero Slides
-            "CREATE TABLE IF NOT EXISTS hero_slides (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                title_line1 VARCHAR(255),
-                title_line2 VARCHAR(255),
-                description TEXT,
-                button_text VARCHAR(100),
-                button_link VARCHAR(255),
-                image_url VARCHAR(255),
-                status TINYINT DEFAULT 1,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )",
+            // // Hero Slides
+            // "CREATE TABLE IF NOT EXISTS hero_slides (
+            //     id INT AUTO_INCREMENT PRIMARY KEY,
+            //     title_line1 VARCHAR(255),
+            //     title_line2 VARCHAR(255),
+            //     description TEXT,
+            //     button_text VARCHAR(100),
+            //     button_link VARCHAR(255),
+            //     image_url VARCHAR(255),
+            //     status TINYINT DEFAULT 1,
+            //     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            // )",
 
-            // Counters
-            "CREATE TABLE IF NOT EXISTS counters (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                label VARCHAR(100),
-                value INT,
-                icon VARCHAR(100),
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )",
+            // // Counters
+            // "CREATE TABLE IF NOT EXISTS counters (
+            //     id INT AUTO_INCREMENT PRIMARY KEY,
+            //     label VARCHAR(100),
+            //     value INT,
+            //     icon VARCHAR(100),
+            //     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            // )",
 
             // Industries
             "CREATE TABLE IF NOT EXISTS industries (
@@ -76,40 +76,40 @@ class Database {
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )",
 
-            // Projects
-            "CREATE TABLE IF NOT EXISTS projects (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                title VARCHAR(150),
-                description TEXT,
-                industry_id INT,
-                image_url VARCHAR(255),
-                status TINYINT DEFAULT 1,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (industry_id) REFERENCES industries(id) ON DELETE CASCADE
-            )",
+            // // Projects
+            // "CREATE TABLE IF NOT EXISTS projects (
+            //     id INT AUTO_INCREMENT PRIMARY KEY,
+            //     title VARCHAR(150),
+            //     description TEXT,
+            //     industry_id INT,
+            //     image_url VARCHAR(255),
+            //     status TINYINT DEFAULT 1,
+            //     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            //     FOREIGN KEY (industry_id) REFERENCES industries(id) ON DELETE CASCADE
+            // )",
 
-            // Team Members
-            "CREATE TABLE IF NOT EXISTS team_members (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                name VARCHAR(150),
-                designation VARCHAR(150),
-                photo VARCHAR(255),
-                bio TEXT,
-                social_links TEXT,
-                status TINYINT DEFAULT 1,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )",
+            // // Team Members
+            // "CREATE TABLE IF NOT EXISTS team_members (
+            //     id INT AUTO_INCREMENT PRIMARY KEY,
+            //     name VARCHAR(150),
+            //     designation VARCHAR(150),
+            //     photo VARCHAR(255),
+            //     bio TEXT,
+            //     social_links TEXT,
+            //     status TINYINT DEFAULT 1,
+            //     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            // )",
 
-            // Testimonials
-            "CREATE TABLE IF NOT EXISTS testimonials (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                name VARCHAR(150),
-                designation VARCHAR(150),
-                message TEXT,
-                photo VARCHAR(255),
-                status TINYINT DEFAULT 1,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )",
+            // // Testimonials
+            // "CREATE TABLE IF NOT EXISTS testimonials (
+            //     id INT AUTO_INCREMENT PRIMARY KEY,
+            //     name VARCHAR(150),
+            //     designation VARCHAR(150),
+            //     message TEXT,
+            //     photo VARCHAR(255),
+            //     status TINYINT DEFAULT 1,
+            //     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            // )",
 
             // Jobs
             "CREATE TABLE IF NOT EXISTS jobs (

@@ -15,27 +15,27 @@
      Preloader
   ==============================-->
 <div id="preloader" class="preloader ">
-    <button class="th-btn style2 preloaderCls">Cancel Preloader </button>
-    <div id="loader" class="th-preloader">
-        <div class="animation-preloader">
-            <div class="txt-loading">
-                <span preloader-text="C" class="characters">C</span>
+  <button class="th-btn style2 preloaderCls">Cancel Preloader </button>
+  <div id="loader" class="th-preloader">
+    <div class="animation-preloader">
+      <div class="txt-loading">
+        <span preloader-text="C" class="characters">C</span>
 
-                <span preloader-text="E" class="characters">E</span>
+        <span preloader-text="E" class="characters">E</span>
 
-                <span preloader-text="N" class="characters">N</span>
+        <span preloader-text="N" class="characters">N</span>
 
-                <span preloader-text="T" class="characters">T</span>
+        <span preloader-text="T" class="characters">T</span>
 
-                <span preloader-text="U" class="characters">U</span>
+        <span preloader-text="U" class="characters">U</span>
 
-                <span preloader-text="R" class="characters">R</span>
+        <span preloader-text="R" class="characters">R</span>
 
-                <span preloader-text="Y" class="characters">Y</span>
-            </div>
-        </div>
+        <span preloader-text="Y" class="characters">Y</span>
+      </div>
     </div>
-</div> 
+  </div>
+</div>
 
 <!--==============================
   Mobile Menu
@@ -52,15 +52,15 @@
       <ul>
         <li><a href="/century-group/public/">Home</a></li>
         <li><a href="/century-group/public/about">About Us</a></li>
-        <li class="menu-item-has-children">
+        <li>
           <a href="/century-group/public/industries">Industries</a>
-          <ul class="sub-menu">
+          <!-- <ul class="sub-menu">
             <li><a href="/century-group/public/realestate">Real Estate</a></li>
             <li><a href="/century-group/public/hotels">Hotels & Resorts</a></li>
             <li><a href="/century-group/public/garments">Garments & Textiles</a></li>
             <li><a href="/century-group/public/airways">Airways</a></li>
             <li><a href="/century-group/public/finance">Finance & Investments</a></li>
-          </ul>
+          </ul> -->
         </li>
         <li><a href="/century-group/public/careers">Careers</a></li>
         <li><a href="/century-group/public/contact">Contact Us</a></li>
@@ -89,15 +89,15 @@
               <ul>
                 <li><a href="/century-group/public/">Home</a></li>
                 <li><a href="/century-group/public/about">About Us</a></li>
-                <li class="menu-item-has-children">
+                <li>
                   <a href="/century-group/public/industries">Industries</a>
-                  <ul class="sub-menu">
+                  <!-- <ul class="sub-menu">
                     <li><a href="/century-group/public/realestate">Real Estate</a></li>
                     <li><a href="/century-group/public/hotels">Hotels & Resorts</a></li>
                     <li><a href="/century-group/public/garments">Garments & Textiles</a></li>
                     <li><a href="/century-group/public/airways">Airways</a></li>
                     <li><a href="/century-group/public/finance">Finance & Investments</a></li>
-                  </ul>
+                  </ul> -->
                 </li>
                 <li><a href="/century-group/public/careers">Careers</a></li>
                 <li><a href="/century-group/public/contact">Contact Us</a></li>
