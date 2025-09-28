@@ -62,7 +62,6 @@
             <li><a href="/century-group/public/finance">Finance & Investments</a></li>
           </ul>
         </li>
-        <li><a href="/century-group/public/projects">Projects</a></li>
         <li><a href="/century-group/public/careers">Careers</a></li>
         <li><a href="/century-group/public/contact">Contact Us</a></li>
       </ul>
@@ -100,7 +99,6 @@
                     <li><a href="/century-group/public/finance">Finance & Investments</a></li>
                   </ul>
                 </li>
-                <li><a href="/century-group/public/projects">Projects</a></li>
                 <li><a href="/century-group/public/careers">Careers</a></li>
                 <li><a href="/century-group/public/contact">Contact Us</a></li>
               </ul>
