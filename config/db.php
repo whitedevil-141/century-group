@@ -46,13 +46,14 @@ class Database {
             // Industries
             "CREATE TABLE IF NOT EXISTS industries (
                 id INT AUTO_INCREMENT PRIMARY KEY,
-                name VARCHAR(150),
-                slug VARCHAR(150) UNIQUE,
-                description TEXT,
-                icon VARCHAR(255),
-                image_url TEXT,
-                status TINYINT DEFAULT 1,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                name VARCHAR(255) NOT NULL,
+                slug VARCHAR(255) NOT NULL UNIQUE,
+                description TEXT NULL,
+                icon VARCHAR(255) DEFAULT NULL,
+                image_url JSON DEFAULT NULL,
+                status TINYINT(1) DEFAULT 1, -- 1=active, 0=inactive
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )",
 
             // Jobs
