@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../config/db.php';
+Database::initTables();
 require __DIR__ . '/../vendor/autoload.php';
 
 use Src\Controllers\PagesController;
