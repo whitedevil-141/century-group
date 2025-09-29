@@ -4,68 +4,18 @@ if (!isset($_SESSION['user'])) {
     header("Location: index.php");
     exit;
 }
-
-require_once __DIR__ . '/../config/db.php';
-$pdo = Database::connect();
-
-// ✅ Add job
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] === 'add') {
-    $stmt = $pdo->prepare("
-        INSERT INTO jobs (title, department_name, location, job_type, description) 
-        VALUES (?,?,?,?,?)
-    ");
-    $stmt->execute([
-        $_POST['title'],
-        $_POST['department_name'],
-        $_POST['location'],
-        $_POST['job_type'],
-        $_POST['description']
-    ]);
-    header("Location: jobs.php");
-    exit;
-}
-
-// ✅ Delete job
-if (isset($_GET['delete'])) {
-    $id = (int) $_GET['delete'];
-    $pdo->prepare("DELETE FROM jobs WHERE id=?")->execute([$id]);
-    header("Location: jobs.php");
-    exit;
-}
-
-// ✅ Edit job
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] === 'edit') {
-    $id = (int) $_POST['id'];
-    $stmt = $pdo->prepare("
-        UPDATE jobs 
-        SET title=?, department_name=?, location=?, job_type=?, description=? 
-        WHERE id=?
-    ");
-    $stmt->execute([
-        $_POST['title'],
-        $_POST['department_name'],
-        $_POST['location'],
-        $_POST['job_type'],
-        $_POST['description'],
-        $id
-    ]);
-    header("Location: jobs.php");
-    exit;
-}
-
-// ✅ Fetch all jobs
-$jobs = $pdo->query("SELECT * FROM jobs ORDER BY created_at DESC")->fetchAll();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Jobs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../public/assets/css/admin.css">
     <style>
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th, td { border: 1px solid #ccc; padding: 8px; text-align: left; vertical-align: top; }
         th { background: #f4f4f4; }
-        .actions a { margin-right: 8px; }
+        .actions button { margin-right: 5px; }
     </style>
 </head>
 <body>
@@ -81,77 +31,73 @@ $jobs = $pdo->query("SELECT * FROM jobs ORDER BY created_at DESC")->fetchAll();
 
 <div class="content">
     <h2>Jobs</h2>
+    <button id="openModalBtn" class="btn-primary">➕ Add Job</button>
 
-    <!-- Add Job -->
-    <form method="POST">
-        <input type="hidden" name="action" value="add">
-        <input type="text" name="title" placeholder="Job Title" required>
-        <input type="text" name="department_name" placeholder="Department Name">
-        <input type="text" name="location" placeholder="Location">
+    <!-- Add Modal -->
+    <div id="jobModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Add Job</h3>
+            <form id="addJobForm" class="form-card">
+                <input type="hidden" name="action" value="add">
+                <div class="form-group"><label>Title *</label><input type="text" name="title" required></div>
+                <div class="form-group"><label>Department</label><input type="text" name="department_name"></div>
+                <div class="form-group"><label>Location</label><input type="text" name="location"></div>
+                <div class="form-group">
+                    <label>Type</label>
+                    <select name="job_type" required>
+                        <option value="Full Time">Full Time</option>
+                        <option value="Part Time">Part Time</option>
+                        <option value="Internship">Internship</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>Description</label><textarea name="description" rows="4"></textarea></div>
+                <button type="submit" class="btn-primary">Save Job</button>
+            </form>
+        </div>
+    </div>
 
-        <select name="job_type" required>
-            <option value="Full Time">Full Time</option>
-            <option value="Part Time">Part Time</option>
-            <option value="Internship">Internship</option>
-        </select>
-
-        <textarea name="description" placeholder="Job Description"></textarea>
-
-        <button type="submit">Add Job</button>
-    </form>
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Edit Job</h3>
+            <form id="editJobForm" class="form-card">
+                <input type="hidden" name="action" value="edit">
+                <input type="hidden" name="id" id="edit-id">
+                <div class="form-group"><label>Title *</label><input type="text" name="title" id="edit-title" required></div>
+                <div class="form-group"><label>Department</label><input type="text" name="department_name" id="edit-department"></div>
+                <div class="form-group"><label>Location</label><input type="text" name="location" id="edit-location"></div>
+                <div class="form-group">
+                    <label>Type</label>
+                    <select name="job_type" id="edit-type" required>
+                        <option value="Full Time">Full Time</option>
+                        <option value="Part Time">Part Time</option>
+                        <option value="Internship">Internship</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>Description</label><textarea name="description" id="edit-description" rows="4"></textarea></div>
+                <button type="submit" class="btn-primary">Update Job</button>
+            </form>
+        </div>
+    </div>
 
     <!-- Job List -->
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Department</th>
-            <th>Location</th>
-            <th>Type</th>
-            <th>Created At</th>
-            <th>Actions</th>
-        </tr>
-        <?php foreach ($jobs as $job): ?>
-        <tr>
-            <td><?= htmlspecialchars($job['title']) ?></td>
-            <td><?= htmlspecialchars($job['department_name']) ?></td>
-            <td><?= htmlspecialchars($job['location']) ?></td>
-            <td><?= htmlspecialchars($job['job_type']) ?></td>
-            <td><?= htmlspecialchars($job['created_at']) ?></td>
-            <td class="actions">
-                <a href="jobs.php?edit=<?= $job['id'] ?>">Edit</a>
-                <a href="?delete=<?= $job['id'] ?>" onclick="return confirm('Delete this job?')">Delete</a>
-            </td>
-        </tr>
-        <?php endforeach; ?>
+    <table id="jobTable">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Department</th>
+                <th>Location</th>
+                <th>Type</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
     </table>
-
-    <!-- Edit Form -->
-    <?php if (isset($_GET['edit'])): 
-        $editId = (int) $_GET['edit'];
-        $editStmt = $pdo->prepare("SELECT * FROM jobs WHERE id=?");
-        $editStmt->execute([$editId]);
-        $job = $editStmt->fetch();
-        if ($job): ?>
-        <h3>Edit Job</h3>
-        <form method="POST">
-            <input type="hidden" name="action" value="edit">
-            <input type="hidden" name="id" value="<?= $job['id'] ?>">
-
-            <input type="text" name="title" value="<?= htmlspecialchars($job['title']) ?>" required>
-            <input type="text" name="department_name" value="<?= htmlspecialchars($job['department_name']) ?>">
-            <input type="text" name="location" value="<?= htmlspecialchars($job['location']) ?>">
-
-            <select name="job_type" required>
-                <option <?= $job['job_type']=="Full Time" ? "selected" : "" ?>>Full Time</option>
-                <option <?= $job['job_type']=="Part Time" ? "selected" : "" ?>>Part Time</option>
-                <option <?= $job['job_type']=="Internship" ? "selected" : "" ?>>Internship</option>
-            </select>
-
-            <textarea name="description"><?= htmlspecialchars($job['description']) ?></textarea>
-
-            <button type="submit">Update Job</button>
-        </form>
-    <?php endif; endif; ?>
 </div>
+
+<script src="../public/assets/js/jobs.js"></script>
 </body>
 </html>
