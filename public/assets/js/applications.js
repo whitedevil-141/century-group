@@ -28,9 +28,11 @@ async function loadApps() {
                     <option value="Accepted" ${app.status === "Accepted" ? "selected" : ""}>Accepted</option>
                     <option value="Rejected" ${app.status === "Rejected" ? "selected" : ""}>Rejected</option>
                 </select>
+                <br>
                 <button id="btn-${app.id}" onclick="updateStatus(${app.id})">Update</button>
             </td>
         `;
+
         tbody.appendChild(tr);
     });
 }
@@ -38,7 +40,8 @@ async function loadApps() {
 // ---------------- UPDATE STATUS ----------------
 async function updateStatus(id) {
     const status = document.getElementById("status-" + id).value;
-    const message = document.getElementById("msg-" + id).value.trim();
+    const msgBox = document.getElementById("msg-" + id);
+    const message = msgBox ? msgBox.value.trim() : "";
     const btn = document.getElementById("btn-" + id);
 
     btn.disabled = true;
