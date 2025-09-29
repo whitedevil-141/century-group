@@ -67,7 +67,14 @@ require __DIR__ . '/layouts/header.php';
                             <p class="job-desc">We are looking for an energetic Marketing Executive to support branding campaigns across our hotels and resorts.</p>
                         </div>
                         <div class="text-end">
-                            <button class="th-btn mb-0 style1 th-btn-icon" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
+                            <button 
+                                class="th-btn mb-0 style1 th-btn-icon apply-btn"
+                                data-bs-toggle="modal" 
+                                data-bs-target="#applyModal"
+                                data-id="1"
+                                data-title="Marketing Executive">
+                                Apply Now
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -78,14 +85,21 @@ require __DIR__ . '/layouts/header.php';
                         <div>
                             <h5 class="job-title mb-2">Finance Officer</h5>
                             <p class="job-meta text-muted mb-2">
-                                <i class="fa-solid fa-building-columns"></i> Finance |
+                                <i class="fa-solid fa-building"></i> Finance |
                                 <i class="fa-solid fa-location-dot"></i> Chattogram |
                                 <i class="fa-solid fa-clock"></i> Full Time
                             </p>
                             <p class="job-desc">Join our finance team to support auditing, compliance, and reporting across multiple Century Group industries.</p>
                         </div>
                         <div class="text-end">
-                            <button class="th-btn mb-0 style1 th-btn-icon" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
+                            <button 
+                                class="th-btn mb-0 style1 th-btn-icon apply-btn"
+                                data-bs-toggle="modal" 
+                                data-bs-target="#applyModal"
+                                data-id="2"
+                                data-title="Finance Officer">
+                                Apply Now
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -106,9 +120,9 @@ Application Modal v1 (Stacked Fields)
                 <h2 class="h3 page-title text-theme fw-bold mb-4">Submit Your Application</h2>
 
                 <!-- Application Form -->
-                <form action="mail.php" method="POST" enctype="multipart/form-data" class="appointment-form ajax-contact">
+                <form id="applyForm" action="http://localhost/century-group/api/apply.php" method="POST" enctype="multipart/form-data" class="appointment-form">
                     <div class="row g-3">
-
+                        <input type="hidden" name="job_id" id="job_id">
                         <!-- Name -->
                         <div class="col-12">
                             <label class="form-label">Your Name*</label>
@@ -138,15 +152,10 @@ Application Modal v1 (Stacked Fields)
 
                         <!-- Position -->
                         <div class="col-12">
-                            <label class="form-label">Select Position*</label>
+                            <label class="form-label">Position*</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fal fa-briefcase"></i></span>
-                                <select name="position" class="form-select" required>
-                                    <option value="" disabled selected hidden>Select Position</option>
-                                    <option value="Marketing Executive">Marketing Executive</option>
-                                    <option value="Finance Officer">Finance Officer</option>
-                                    <option value="HR Manager">HR Manager</option>
-                                </select>
+                                <input type="text" class="form-control" id="job_title" readonly>
                             </div>
                         </div>
 
@@ -165,7 +174,7 @@ Application Modal v1 (Stacked Fields)
                             <label class="form-label">Additional Message (optional)</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="far fa-comments"></i></span>
-                                <textarea name="message" placeholder="Type your message here..." class="form-control" rows="4"></textarea>
+                                <textarea name="message" placeholder="Type your message here..." class="form-control" rows="4" ></textarea>
                             </div>
                         </div>
 
@@ -225,6 +234,37 @@ Application Modal v1 (Stacked Fields)
 
     <!-- Main Js File -->
     <script src="assets/js/main.js"></script>
+    <script>
+    document.getElementById("applyForm").addEventListener("submit", async function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+
+        const res = await fetch(this.action, {
+            method: "POST",
+            body: formData
+        });
+
+        const json = await res.json();
+        alert(json.message);
+
+        if (json.success) {
+            this.reset();
+            bootstrap.Modal.getInstance(document.getElementById("applyModal")).hide();
+        } else {
+            console.error(json.debug);
+        }
+    });
+    </script>
+
+    <script>
+    document.querySelectorAll(".apply-btn").forEach(btn => {
+        btn.addEventListener("click", function() {
+            document.getElementById("job_id").value = this.dataset.id;
+            document.getElementById("job_title").value = this.dataset.title;
+        });
+    });
+    </script>
+
 </body>
 
 </html>

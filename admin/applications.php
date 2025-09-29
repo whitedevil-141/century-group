@@ -4,16 +4,17 @@ if (!isset($_SESSION['user'])) {
     header("Location: index.php");
     exit;
 }
-require_once __DIR__ . '/../config/db.php';
-$pdo = Database::connect();
-
-$apps = $pdo->query("SELECT a.*, j.title as job_title FROM applications a LEFT JOIN jobs j ON a.job_id=j.id ORDER BY a.created_at DESC")->fetchAll();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Applications</title>
     <link rel="stylesheet" href="../public/assets/css/admin.css">
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; }
+        textarea { width: 100%; min-height: 50px; }
+    </style>
 </head>
 <body>
 <div class="sidebar">
@@ -25,20 +26,17 @@ $apps = $pdo->query("SELECT a.*, j.title as job_title FROM applications a LEFT J
         <li><a href="logout.php">Logout</a></li>
     </ul>
 </div>
+
 <div class="content">
     <h2>Applications</h2>
-    <table>
-        <tr><th>Name</th><th>Email</th><th>Job</th><th>CV</th><th>Status</th></tr>
-        <?php foreach ($apps as $app): ?>
-        <tr>
-            <td><?= htmlspecialchars($app['name']) ?></td>
-            <td><?= htmlspecialchars($app['email']) ?></td>
-            <td><?= htmlspecialchars($app['job_title']) ?></td>
-            <td><a href="../<?= $app['cv_path'] ?>" target="_blank">Download CV</a></td>
-            <td><?= htmlspecialchars($app['status']) ?></td>
-        </tr>
-        <?php endforeach; ?>
+    <table id="appsTable">
+        <thead>
+            <tr><th>Name</th><th>Email</th><th>Phone</th><th>Job</th><th>CV</th><th>Status</th><th>Action</th></tr>
+        </thead>
+        <tbody></tbody>
     </table>
 </div>
+
+<script src="../public/assets/js/applications.js"></script>
 </body>
 </html>
