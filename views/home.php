@@ -895,7 +895,7 @@ Appointment Area
                     <div class="title-area mb-35">
                         <h2 class="sec-title text-white">Book Business Solutions</h2>
                     </div>
-                    <form action="mail.php" method="POST" class="appointment-form ajax-contact me-xl-5">
+                    <form method="POST" class="appointment-form ajax-contact me-xl-5">
                         <div class="row">
                             <div class="form-group style-border3 col-md-6">
                                 <input type="text" class="form-control" name="name" id="name" placeholder="Your Name*">
@@ -911,7 +911,7 @@ Appointment Area
                             </div>
                             <div class="col-12 form-group style-border3">
                                 <i class="far fa-comments"></i>
-                                <textarea placeholder="Type Your Message" class="form-control"></textarea>
+                                <textarea name="message" placeholder="Type Your Message" class="form-control"></textarea>
                             </div>
                             <div class="col-12 form-btn mt-4">
                                 <button class="th-btn style-border">Submit Message <span class="btn-icon"><img src="assets/img/icon/paper-plane.svg" alt="img"></span></button>
@@ -1100,6 +1100,46 @@ About Area
 
     <!-- Main Js File -->
     <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector(".ajax-contact");
+
+            form.addEventListener("submit", async function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(form);
+
+                try {
+                    const response = await fetch("http://localhost/century-group/api/send-message.php", { // 👈 adjust path if needed
+                        method: "POST",
+                        body: formData
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Message Sent!',
+                            text: result.message,
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'OK'
+                        });
+                        form.reset();
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: result.message || "Something went wrong."
+                        });
+                    }
+
+                } catch (error) {
+                    console.error("Error:", error);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -26,6 +26,7 @@ if (!isset($_SESSION['user'])) {
         <li><a href="industries.php">Industries</a></li>
         <li><a href="jobs.php" class="active">Jobs</a></li>
         <li><a href="applications.php">Applications</a></li>
+        <li><a href="messages.php">Messages</a></li>
         <li><a href="logout.php">Logout</a></li>
     </ul>
 </div>

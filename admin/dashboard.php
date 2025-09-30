@@ -10,7 +10,7 @@ $db = Database::connect();
 $industriesCount = $db->query("SELECT COUNT(*) FROM industries")->fetchColumn();
 $jobsCount = $db->query("SELECT COUNT(*) FROM jobs")->fetchColumn();
 $applicationsCount = $db->query("SELECT COUNT(*) FROM applications")->fetchColumn();
-// $messagesCount = $db->query("SELECT COUNT(*) FROM messages")->fetchColumn();
+$messagesCount = $db->query("SELECT COUNT(*) FROM messages")->fetchColumn();
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,7 +54,7 @@ $applicationsCount = $db->query("SELECT COUNT(*) FROM applications")->fetchColum
         <li><a href="industries.php">Industries</a></li>
         <li><a href="jobs.php">Jobs</a></li>
         <li><a href="applications.php">Applications</a></li>
-        <!-- <li><a href="messages.php">Messages</a></li> -->
+        <li><a href="messages.php">Messages</a></li>
         <li><a href="logout.php">Logout</a></li>
     </ul>
 </div>
@@ -76,10 +76,10 @@ $applicationsCount = $db->query("SELECT COUNT(*) FROM applications")->fetchColum
             <h3><?= $applicationsCount; ?></h3>
             <a href="applications.php">Applications</a>
         </div>
-        <!-- <div class="card">
+        <div class="card">
             <h3><?= $messagesCount; ?></h3>
             <p>Messages</p>
-        </div> -->
+        </div>
     </div>
 </div>
 </body>

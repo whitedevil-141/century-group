@@ -81,13 +81,12 @@ Contact Area
                                     </div>
                                     <div class="col-12 form-group style-border style-radius">
                                         <i class="far fa-comments"></i>
-                                        <textarea placeholder="Type Your Message" class="form-control" required></textarea>
+                                        <textarea name="message" placeholder="Type Your Message" class="form-control" required></textarea>
                                     </div>
                                     <div class="col-12 form-btn mt-4">
-                                        <button class="th-btn">Submit Message <span class="btn-icon"><img src="assets/img/icon/paper-plane.svg" alt="img"></span></button>
+                                        <button type="submit" class="th-btn">Submit Message <span class="btn-icon"><img src="assets/img/icon/paper-plane.svg" alt="img"></span></button>
                                     </div>
                                 </div>
-                                <p class="form-messages mb-0 mt-3"></p>
                             </form>
                         </div>
                     </div>
@@ -139,6 +138,48 @@ Contact Area
 
     <!-- Main Js File -->
     <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector(".ajax-contact");
+
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch("http://localhost/century-group/api/send-message.php", { // 👈 adjust path if needed
+                    method: "POST",
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Message Sent!',
+                        text: result.message,
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'OK'
+                    });
+                    form.reset();
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: result.message || "Something went wrong."
+                    });
+                }
+
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        });
+    });
+    </script>
+
 </body>
 
 </html>
