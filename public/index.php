@@ -1,24 +1,49 @@
 <?php
+require_once __DIR__ . '/../config/db.php';
+Database::initTables();
+require __DIR__ . '/../vendor/autoload.php';
 
-$path = __DIR__ . '/../config/Database.php';
-if (!file_exists($path)) {
-    die("❌ Database.php not found at: $path");
-}
+use Src\Controllers\PagesController;
+use Src\Controllers\RealEstateController;
 
-require_once $path;
+$uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
-if (!class_exists('Database')) {
-    die("❌ Database class not defined in Database.php");
-}
+// Remove "century-group/public" from URI
+$uri = str_replace('century-group/public', '', $uri);
+$uri = trim($uri, '/');
 
-$pdo = Database::connect();
+// Simple router
+switch ($uri) {
+    case '':
+    case 'home':
+        (new PagesController())->home();
+        break;
 
-echo "<h1>Century Group Backend</h1>";
+    case 'about':
+        (new PagesController())->about();
+        break;
 
-try {
-    $stmt = $pdo->query("SELECT COUNT(*) AS user_count FROM users");
-    $row = $stmt->fetch();
-    echo "✅ Database connected. Users in table: " . $row['user_count'];
-} catch (Exception $e) {
-    echo "❌ Query failed: " . $e->getMessage();
+    case 'contact':
+        (new PagesController())->contact();
+        break;
+
+    case 'careers':
+        (new PagesController())->careers();
+        break;
+
+    case 'industries':
+        (new PagesController())->industries();
+        break;
+
+    case 'realestate':
+        (new RealEstateController())->index();
+        break;
+
+    case 'projects':
+        (new PagesController())->projects();
+        break;
+    default:
+        http_response_code(404);
+        require __DIR__ . '/../views/404.php';
+        break;
 }

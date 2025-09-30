@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /century-group/public/
+
+# If file or directory exists, serve it
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Otherwise, send everything to index.php
+RewriteRule ^ index.php [QSA,L]

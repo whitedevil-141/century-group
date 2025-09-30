@@ -20,7 +20,7 @@ logs/
 cache/
 storage/
 tmp/
-
+uploads/
 # Ignore PHPUnit or testing artifacts
 .phpunit.result.cache
 
