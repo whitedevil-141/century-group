@@ -113,7 +113,7 @@
                 </div>
                 <div class="col-auto">
                     <div class="sec-btn">
-                        <a href="contact.html" class="th-btn style-border th-btn-icon">Contact Us</a>
+                        <a href="contact" class="th-btn style-border th-btn-icon">Contact Us</a>
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@
                             <div class="service-card-icon">
                                 <img src="assets/img/icon/service-icon2-2.svg" alt="Icon">
                             </div>
-                            <h3 class="box-title"><a href="services.html">Trusted Real Estate</a></h3>
+                            <h3 class="box-title"><a >Trusted Real Estate</a></h3>
                             <p class="box-text">From Century Kuakata Model Town to premium housing projects, we deliver modern living solutions built on quality, innovation, and trust.</p>
                             <div class="service-img img-shine">
                                 <img src="assets/img/service/1-1.png" alt="img">
@@ -136,7 +136,7 @@
                             <div class="service-card-icon">
                                 <img src="assets/img/icon/service-icon4-2.svg" alt="Icon">
                             </div>
-                            <h3 class="box-title"><a href="services.html">Diverse Business Portfolio</a></h3>
+                            <h3 class="box-title"><a >Diverse Business Portfolio</a></h3>
                             <p class="box-text">From aviation and tourism to textiles, finance, and food & beverages — our group delivers reliable solutions across multiple industries.</p>
                             <div class="service-img img-shine">
                                 <img src="assets/img/service/1-2.png" alt="img">
@@ -148,7 +148,7 @@
                             <div class="service-card-icon">
                                 <img src="assets/img/icon/service-icon2-3.svg" alt="Icon">
                             </div>
-                            <h3 class="box-title"><a href="services.html">Sustainable Growth</a></h3>
+                            <h3 class="box-title"><a >Sustainable Growth</a></h3>
                             <p class="box-text">We are committed to sustainable development and social responsibility, ensuring our projects benefit both people and the environment.</p>
                             <div class="service-img img-shine">
                                 <img src="assets/img/service/1-3.png" alt="img">
@@ -175,11 +175,6 @@ Team Area
                         <p class="text-light">Realar help you easily create a real estate trading website. With the function Register, Login, Post real estate news.</p>
                     </div>
                 </div>
-                <div class="col-auto">
-                    <div class="sec-btn">
-                        <a href="team.html" class="th-btn style-border th-btn-icon">View All Team</a>
-                    </div>
-                </div>
             </div>
             <div class="slider-area team-slider3">
                 <div class="swiper th-slider" id="teamSlider3" data-slider-options='{"breakpoints":{"0":{"slidesPerView":1},"576":{"slidesPerView":"1"},"768":{"slidesPerView":"2"},"992":{"slidesPerView":"3"},"1400":{"slidesPerView":"3"}}}'>
@@ -199,12 +194,12 @@ Team Area
                                             <a target="_blank" href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
                                             <a target="_blank" href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
                                         </div>
-                                        <a class="icon-btn" href="team-details.html"><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
+                                        <a class="icon-btn" ><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
                                     </div>
                                 </div>
                                 <div class="team-card-content">
                                     <div class="media-left">
-                                        <h3 class="box-title"><a href="team-details.html">Janny Wilson</a></h3>
+                                        <h3 class="box-title"><a >Janny Wilson</a></h3>
                                         <span class="team-desig">Property Expert</span>
                                     </div>
                                     <a class="icon-btn" href="tel:09876543210"><img src="assets/img/icon/phone.svg" alt="img"></a>
@@ -227,12 +222,12 @@ Team Area
                                             <a target="_blank" href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
                                             <a target="_blank" href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
                                         </div>
-                                        <a class="icon-btn" href="team-details.html"><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
+                                        <a class="icon-btn" ><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
                                     </div>
                                 </div>
                                 <div class="team-card-content">
                                     <div class="media-left">
-                                        <h3 class="box-title"><a href="team-details.html">Andrew Richard</a></h3>
+                                        <h3 class="box-title"><a >Andrew Richard</a></h3>
                                         <span class="team-desig">Property Expert</span>
                                     </div>
                                     <a class="icon-btn" href="tel:09876543210"><img src="assets/img/icon/phone.svg" alt="img"></a>
@@ -255,12 +250,12 @@ Team Area
                                             <a target="_blank" href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
                                             <a target="_blank" href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
                                         </div>
-                                        <a class="icon-btn" href="team-details.html"><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
+                                        <a class="icon-btn" ><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
                                     </div>
                                 </div>
                                 <div class="team-card-content">
                                     <div class="media-left">
-                                        <h3 class="box-title"><a href="team-details.html">Zarin Wilson</a></h3>
+                                        <h3 class="box-title"><a >Zarin Wilson</a></h3>
                                         <span class="team-desig">Property Expert</span>
                                     </div>
                                     <a class="icon-btn" href="tel:09876543210"><img src="assets/img/icon/phone.svg" alt="img"></a>
@@ -283,12 +278,12 @@ Team Area
                                             <a target="_blank" href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
                                             <a target="_blank" href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
                                         </div>
-                                        <a class="icon-btn" href="team-details.html"><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
+                                        <a class="icon-btn" ><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
                                     </div>
                                 </div>
                                 <div class="team-card-content">
                                     <div class="media-left">
-                                        <h3 class="box-title"><a href="team-details.html">Michel Smith</a></h3>
+                                        <h3 class="box-title"><a >Michel Smith</a></h3>
                                         <span class="team-desig">Property Expert</span>
                                     </div>
                                     <a class="icon-btn" href="tel:09876543210"><img src="assets/img/icon/phone.svg" alt="img"></a>
@@ -311,12 +306,12 @@ Team Area
                                             <a target="_blank" href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
                                             <a target="_blank" href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
                                         </div>
-                                        <a class="icon-btn" href="team-details.html"><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
+                                        <a class="icon-btn" ><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
                                     </div>
                                 </div>
                                 <div class="team-card-content">
                                     <div class="media-left">
-                                        <h3 class="box-title"><a href="team-details.html">Janny Wilson</a></h3>
+                                        <h3 class="box-title"><a >Janny Wilson</a></h3>
                                         <span class="team-desig">Property Expert</span>
                                     </div>
                                     <a class="icon-btn" href="tel:09876543210"><img src="assets/img/icon/phone.svg" alt="img"></a>
@@ -339,12 +334,12 @@ Team Area
                                             <a target="_blank" href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
                                             <a target="_blank" href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
                                         </div>
-                                        <a class="icon-btn" href="team-details.html"><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
+                                        <a class="icon-btn" ><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
                                     </div>
                                 </div>
                                 <div class="team-card-content">
                                     <div class="media-left">
-                                        <h3 class="box-title"><a href="team-details.html">Andrew Richard</a></h3>
+                                        <h3 class="box-title"><a >Andrew Richard</a></h3>
                                         <span class="team-desig">Property Expert</span>
                                     </div>
                                     <a class="icon-btn" href="tel:09876543210"><img src="assets/img/icon/phone.svg" alt="img"></a>
@@ -367,12 +362,12 @@ Team Area
                                             <a target="_blank" href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
                                             <a target="_blank" href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
                                         </div>
-                                        <a class="icon-btn" href="team-details.html"><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
+                                        <a class="icon-btn" ><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
                                     </div>
                                 </div>
                                 <div class="team-card-content">
                                     <div class="media-left">
-                                        <h3 class="box-title"><a href="team-details.html">Zarin Wilson</a></h3>
+                                        <h3 class="box-title"><a >Zarin Wilson</a></h3>
                                         <span class="team-desig">Property Expert</span>
                                     </div>
                                     <a class="icon-btn" href="tel:09876543210"><img src="assets/img/icon/phone.svg" alt="img"></a>
@@ -395,12 +390,12 @@ Team Area
                                             <a target="_blank" href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
                                             <a target="_blank" href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
                                         </div>
-                                        <a class="icon-btn" href="team-details.html"><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
+                                        <a class="icon-btn" ><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
                                     </div>
                                 </div>
                                 <div class="team-card-content">
                                     <div class="media-left">
-                                        <h3 class="box-title"><a href="team-details.html">Michel Smith</a></h3>
+                                        <h3 class="box-title"><a >Michel Smith</a></h3>
                                         <span class="team-desig">Property Expert</span>
                                     </div>
                                     <a class="icon-btn" href="tel:09876543210"><img src="assets/img/icon/phone.svg" alt="img"></a>

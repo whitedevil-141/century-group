@@ -32,7 +32,7 @@ Hero Area
                                             From premium apartments to commercial complexes, we craft modern spaces designed for comfort, 
                                             convenience, and sustainability. Our developments shape city skylines and build lasting communities across Bangladesh.</p>
                                         <div class="btn-wrap" data-ani="slideinup" data-ani-delay="0.7s">
-                                            <a href="real-estate.html" class="th-btn style2 th-btn-icon">Explore Real Estate</a>
+                                            <a class="th-btn style2 th-btn-icon">Explore Real Estate</a>
 
                                         </div>
                                     </div>
@@ -62,7 +62,7 @@ Hero Area
                                             Every property is designed to create unforgettable experiences for business and leisure travelers alike.
                                         </p>
                                         <div class="btn-wrap" data-ani="slideinup" data-ani-delay="0.7s">
-                                            <a href="hotels.html" class="th-btn style2 th-btn-icon">Discover Our Hotels</a>
+                                            <a class="th-btn style2 th-btn-icon">Discover Our Hotels</a>
 
                                         </div>
                                     </div>
@@ -92,7 +92,7 @@ Hero Area
                                             Our commitment to sustainability and innovation drives Bangladesh’s textile industry forward.
                                         </p>
                                         <div class="btn-wrap" data-ani="slideinup" data-ani-delay="0.7s">
-                                            <a href="garments.html" class="th-btn style2 th-btn-icon">View Garments Division</a>
+                                            <a class="th-btn style2 th-btn-icon">View Garments Division</a>
 
                                         </div>
                                     </div>
@@ -122,7 +122,7 @@ Hero Area
                                             We create safe, inclusive environments where people of all ages can make lasting memories.
                                         </p>
                                         <div class="btn-wrap" data-ani="slideinup" data-ani-delay="0.7s">
-                                            <a href="parks.html" class="th-btn style2 th-btn-icon">Visit Our Parks</a>
+                                            <a class="th-btn style2 th-btn-icon">Visit Our Parks</a>
 
                                         </div>
                                     </div>
@@ -152,7 +152,7 @@ Hero Area
                                             Our vision is to expand horizons and bring the world closer to Bangladesh.  
                                         </p>
                                         <div class="btn-wrap" data-ani="slideinup" data-ani-delay="0.7s">
-                                            <a href="airways.html" class="th-btn style2 th-btn-icon">Fly With Us</a>
+                                            <a class="th-btn style2 th-btn-icon">Fly With Us</a>
 
                                         </div>
                                     </div>
@@ -182,7 +182,7 @@ Hero Area
                                             We invest in people, businesses, and communities to build a secure future.
                                         </p>
                                         <div class="btn-wrap" data-ani="slideinup" data-ani-delay="0.7s">
-                                            <a href="finance.html" class="th-btn style2 th-btn-icon">Learn About Finance</a>
+                                            <a class="th-btn style2 th-btn-icon">Learn About Finance</a>
 
                                         </div>
                                     </div>
@@ -317,7 +317,7 @@ Service Area
                 </div>
                 <div class="col-auto">
                     <div class="sec-btn">
-                        <a href="industries.php" class="th-btn style2 th-btn-icon">Browse All Industries</a>
+                        <a href="industries" class="th-btn style2 th-btn-icon">Browse All Industries</a>
                     </div>
                 </div>
             </div>
@@ -328,7 +328,7 @@ Service Area
                             <div class="service-card-icon">
                                 <img src="assets/img/icon/service-icon2-1.svg" alt="Icon">
                             </div>
-                            <h3 class="box-title"><a href="real-estate.html">Real Estate</a></h3>
+                            <h3 class="box-title"><a>Real Estate</a></h3>
                             <p class="box-text">We provide all-inclusive real estate services to facilitate the easy and confident purchase, sale, and management of your properties.</p>
                             <div class="service-img img-shine">
                                 <img src="assets/img/service/real-estate.jpg" alt="img">
@@ -340,7 +340,7 @@ Service Area
                             <div class="service-card-icon">
                                 <img src="assets/img/icon/service-icon2-2.svg" alt="Icon">
                             </div>
-                            <h3 class="box-title"><a href="hotel.html">Hotels & Resorts</a></h3>
+                            <h3 class="box-title"><a>Hotels & Resorts</a></h3>
                             <p class="box-text">We deliver world-class hospitality experiences through our premium hotels and resorts, 
                                 combining comfort, luxury, and warm service for every guest.</p>
                             <div class="service-img img-shine">
@@ -389,7 +389,7 @@ Gallery Area
                             <div class="title-area mb-md-0 text-center">
                                 <h2 class="sec-title">Get In Touch Today To Get A Free Project Quote</h2>
                                 <div class="btn-wrap mt-4 justify-content-center">
-                                    <a href="contact.html" class="th-btn mb-0 style2 th-btn-icon">Get In Touch</a>
+                                    <a href="contact" class="th-btn mb-0 style2 th-btn-icon">Get In Touch</a>
                                 </div>
                             </div>
                         </div>
@@ -461,7 +461,7 @@ Team Area
                 </div>
                 <div class="col-auto">
                     <div class="sec-btn">
-                        <a href="team.html" class="th-btn style-border3 th-btn-icon">View All Team</a>
+                        <a class="th-btn style-border3 th-btn-icon">View All Team</a>
                     </div>
                 </div>
             </div>
@@ -483,12 +483,12 @@ Team Area
                                             <a target="_blank" href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
                                             <a target="_blank" href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
                                         </div>
-                                        <a class="icon-btn" href="team-details.html"><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
+                                        <a class="icon-btn"><img src="assets/img/icon/arrow-right.svg" alt="img"></a>
                                     </div>
                                 </div>
                                 <div class="team-card-content">
                                     <div class="media-left">
-                                        <h3 class="box-title"><a href="team-details.html">Janny Wilson</a></h3>
+                                        <h3 class="box-title"><a >Janny Wilson</a></h3>
                                         <span class="team-desig">Property Expert</span>
                                     </div>
                                     <a class="icon-btn" href="tel:09876543210"><img src="assets/img/icon/phone.svg" alt="img"></a>
@@ -1054,7 +1054,7 @@ About Area
                         </div>
                     </div>
                     <div class="btn-wrap mt-5">
-                        <a href="about.html" class="th-btn style2 th-btn-icon">More About Realar</a>
+                        <a href="about" class="th-btn style2 th-btn-icon">More About Realar</a>
                     </div>
                 </div>
             </div>

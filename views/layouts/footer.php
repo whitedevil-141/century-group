@@ -16,7 +16,7 @@
                             <div class="widget footer-widget">
                                 <div class="th-widget-about">
                                     <div class="about-logo">
-                                        <a href="index.html"><img src="assets/img/logo.png" alt="Realar"></a>
+                                        <a href="home"><img src="assets/img/logo.png" alt="Realar"></a>
                                     </div>
                                     <p class="about-text">Century Group is a leading Bangladeshi conglomerate with ventures in real estate, hospitality, airways, finance, textiles, and more.</p>
                                     <div class="th-social style3">
@@ -36,8 +36,7 @@
                                     <div class="info-box_text">
                                         <div class="icon"><img src="assets/img/icon/location-dot.svg" alt="img"></div>
                                         <div class="details">
-                                            <p>789 Inner Lane, Holy park,</p>
-                                            <p>California, USA</p>
+                                            <p>Kha-225, Progati Sarani, Merul, Badda, Dhaka 1212, Bangladesh </p>
                                         </div>
                                     </div>
                                     <div class="info-box_text">
@@ -45,8 +44,8 @@
                                             <img src="assets/img/icon/phone.svg" alt="img">
                                         </div>
                                         <div class="details">
-                                            <p><a href="tel:+0123456789" class="info-box_link">+01 234 567 890</a></p>
-                                            <p><a href="tel:+09876543210" class="info-box_link">+09 876 543 210</a></p>
+                                            <p><a href="tel:+880255055046" class="info-box_link">+8802 55055046</a></p>
+                                            <p><a href="tel:55055047" class="info-box_link">55055047</a></p>
                                         </div>
                                     </div>
                                     <div class="info-box_text">
@@ -54,8 +53,8 @@
                                             <img src="assets/img/icon/envelope.svg" alt="img">
                                         </div>
                                         <div class="details">
-                                            <p><a href="mailto:mailinfo00@realar.com" class="info-box_link">mailinfo00@realar.com</a></p>
-                                            <p><a href="mailto:support24@realar.com" class="info-box_link">support24@realar.com</a></p>
+                                            <p><a href="mailto:info@centurygroup.info" class="info-box_link">info@centurygroup.info</a></p>
+                                            <p><a href="mailto:support@centurygroup.info" class="info-box_link">support@centurygroup.info</a></p>
                                         </div>
                                     </div>
                                 </div>
@@ -66,11 +65,10 @@
                                 <h3 class="widget_title">Useful Link</h3>
                                 <div class="menu-all-pages-container">
                                     <ul class="menu">
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="industries.html">Industries</a></li>
-                                        <li><a href="careers.html">Careers</a></li>
-                                        <li><a href="project.html">Projects</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="about">About Us</a></li>
+                                        <li><a href="industries">Industries</a></li>
+                                        <li><a href="careers">Careers</a></li>
+                                        <li><a href="contact">Contact</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -80,10 +78,10 @@
                             <div class="widget widget_nav_menu footer-widget">
                             <h3 class="widget_title">Support</h3>
                             <ul class="menu">
-                                <li><a href="contact.html">Help Center</a></li>
-                                <li><a href="faq.html">FAQ</a></li>
-                                <li><a href="privacy.html">Privacy Policy</a></li>
-                                <li><a href="terms.html">Terms & Conditions</a></li>
+                                <li><a href="contact">Help Center</a></li>
+                                <li><a href="contact">FAQ</a></li>
+                                <li><a href="contact">Privacy Policy</a></li>
+                                <li><a href="contact">Terms & Conditions</a></li>
                             </ul>
                             </div>
                         </div>
@@ -97,15 +95,15 @@
                 <div class="row gy-2 align-items-center">
                     <div class="col-lg-6">
                         <p class="copyright-text">
-                        Copyright &copy; <?= date('Y') ?>  <a href="index.html">Century Group</a>. All rights reserved.
+                        Copyright &copy; <?= date('Y') ?>  <a href="home">Century Group</a>. All rights reserved.
                         </p>
                     </div>
                     <div class="col-lg-6 text-center text-lg-end">
                         <div class="footer-links">
                             <ul>
-                                <li><a href="contact.html">Terms of service</a></li>
-                                <li><a href="contact.html">Privacy policy</a></li>
-                                <li><a href="contact.html">Cookies</a></li>
+                                <li><a href="contact">Terms of service</a></li>
+                                <li><a href="contact">Privacy policy</a></li>
+                                <li><a href="contact">Cookies</a></li>
                             </ul>
                         </div>
                     </div>

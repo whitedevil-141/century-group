@@ -18,6 +18,7 @@
 </head>
 <body>
 <div class="sidebar">
+    <h3 style="padding:10px;">Century Admin</h3>
     <ul>
         <li><a href="dashboard.php">Dashboard</a></li>
         <li><a href="industries.php" class="active">Industries</a></li>

@@ -65,23 +65,23 @@ Contact Area
                     <div class="col-lg-6">
                         <div class="appointment-wrap2 bg-white me-xxl-5" style="box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);">
                             <h2 class="form-title text-theme">Schedule a visit</h2>
-                            <form action="mail.php" method="POST" class="appointment-form ajax-contact">
+                            <form method="POST" class="appointment-form ajax-contact">
                                 <div class="row">
                                     <div class="form-group style-border style-radius col-12">
-                                        <input type="text" class="form-control" name="name" id="name" placeholder="Your Name*">
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Your Name*" required>
                                         <i class="fal fa-user"></i>
                                     </div>
                                     <div class="form-group style-border style-radius col-12">
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email*">
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email*" required>
                                         <i class="fal fa-envelope"></i>
                                     </div>
                                     <div class="form-group style-border style-radius col-md-12">
-                                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number*">
+                                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number*" required>
                                         <i class="fal fa-phone"></i>
                                     </div>
                                     <div class="col-12 form-group style-border style-radius">
                                         <i class="far fa-comments"></i>
-                                        <textarea placeholder="Type Your Message" class="form-control"></textarea>
+                                        <textarea placeholder="Type Your Message" class="form-control" required></textarea>
                                     </div>
                                     <div class="col-12 form-btn mt-4">
                                         <button class="th-btn">Submit Message <span class="btn-icon"><img src="assets/img/icon/paper-plane.svg" alt="img"></span></button>
