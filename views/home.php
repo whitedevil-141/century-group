@@ -906,14 +906,8 @@ Appointment Area
                                 <i class="fal fa-envelope"></i>
                             </div>
                             <div class="form-group style-border3 col-md-12">
-                                <select name="subject" id="subject" class="form-select">
-                                    <option value="" disabled selected hidden>Select Service Type</option>
-                                    <option value="Real Estate">Real Estate</option>
-                                    <option value="Apartment">Apartment</option>
-                                    <option value="Residencial">Residencial</option>
-                                    <option value="Deluxe">Deluxe</option>
-                                </select>
-                                <i class="fal fa-angle-down"></i>
+                                <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number*">
+                                <i class="fal fa-phone"></i>
                             </div>
                             <div class="col-12 form-group style-border3">
                                 <i class="far fa-comments"></i>
