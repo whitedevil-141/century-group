@@ -10,7 +10,7 @@ if (!isset($_SESSION['user'])) {
 <head>
     <title>Jobs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../public/assets/css/admin.css">
+    <link rel="stylesheet" href="../admin/assets/css/admin.css">
     <style>
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th, td { border: 1px solid #ccc; padding: 8px; text-align: left; vertical-align: top; }
@@ -98,6 +98,6 @@ if (!isset($_SESSION['user'])) {
     </table>
 </div>
 
-<script src="../public/assets/js/jobs.js"></script>
+<script src="../admin/assets/js/jobs.js"></script>
 </body>
 </html>

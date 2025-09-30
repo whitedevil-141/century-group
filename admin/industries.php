@@ -3,7 +3,7 @@
 <head>
     <title>Industries</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../public/assets/css/admin.css">
+    <link rel="stylesheet" href="../admin/assets/css/admin.css">
     <style>
         img.thumb { width: 60px; height: auto; margin-right: 5px; }
         .image-wrapper { position:relative; display:inline-block; margin:5px; border-radius:6px; overflow:hidden; }
@@ -83,6 +83,6 @@
 </div>
 
 <!-- ✅ External JS -->
-<script src="../public/assets/js/industries.js"></script>
+<script src="../admin/assets/js/industries.js"></script>
 </body>
 </html>

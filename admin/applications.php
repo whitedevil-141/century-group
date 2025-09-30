@@ -9,7 +9,7 @@ if (!isset($_SESSION['user'])) {
 <html>
 <head>
     <title>Applications</title>
-    <link rel="stylesheet" href="../public/assets/css/admin.css">
+    <link rel="stylesheet" href="../admin/assets/css/admin.css">
     <style>
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th, td { border: 1px solid #ccc; padding: 8px; }

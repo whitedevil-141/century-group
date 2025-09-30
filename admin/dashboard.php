@@ -7,7 +7,7 @@ requireLogin(); // redirect if not logged in
 <html>
 <head>
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="../public/assets/css/admin.css">
+    <link rel="stylesheet" href="../admin/assets/css/admin.css">
     
 </head>
 <body>

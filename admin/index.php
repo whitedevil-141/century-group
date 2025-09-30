@@ -52,7 +52,7 @@
 <html>
 <head>
     <title>Admin Login</title>
-    <link rel="stylesheet" href="../public/assets/css/admin.css">
+    <link rel="stylesheet" href="../admin/assets/css/admin.css">
 </head>
 <body>
 <div class="login-box">
