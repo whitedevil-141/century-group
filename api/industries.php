@@ -18,10 +18,10 @@ class FileHelper {
         $mime  = finfo_file($finfo, $file['tmp_name']);
         finfo_close($finfo);
 
-        $allowed = ["image/jpeg", "image/png", "image/gif", "image/webp"];
+        $allowed = ["image/jpeg", "image/png", "image/gif", "image/webp","image/svg+xml"];
         $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
 
-        if (!in_array($mime, $allowed) || !in_array($ext, ["jpg","jpeg","png","gif","webp"])) {
+        if (!in_array($mime, $allowed) || !in_array($ext, ["jpg","jpeg","png","gif","webp", "svg"])) {
             return false;
         }
 
