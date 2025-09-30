@@ -22,88 +22,32 @@ require __DIR__ . '/layouts/header.php';
             <!-- Filter Bar -->
             <div class="row mb-5 gy-3">
                 <div class="col-md-3">
-                    <select class="form-select">
-                        <option>Department</option>
-                        <option>Real Estate</option>
-                        <option>Hospitality</option>
-                        <option>Aviation</option>
-                        <option>Finance</option>
-                        <option>Textiles</option>
+                    <select class="form-select" id="filter-department">
+                        <option value="">Department</option>
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <select class="form-select">
-                        <option>Location</option>
-                        <option>Dhaka</option>
-                        <option>Kuakata</option>
-                        <option>Chattogram</option>
+                    <select class="form-select" id="filter-location">
+                        <option value="">Location</option>
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <select class="form-select">
-                        <option>Job Type</option>
-                        <option>Full Time</option>
-                        <option>Part Time</option>
-                        <option>Internship</option>
+                    <select class="form-select" id="filter-jobtype">
+                        <option value="">Job Type</option>
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <input type="text" class="form-control" placeholder="Search by title...">
+                    <input type="text" id="filter-search" class="form-control" placeholder="Search by title...">
                 </div>
             </div>
+
 
             <!-- Job Listings -->
-            <div class="row gy-4">
-                <!-- Job Card -->
-                <div class="col-md-6">
-                    <div class="job-card p-4 bg-gray shadow-sm rounded h-100 d-flex flex-column justify-content-between">
-                        <div>
-                            <h5 class="job-title mb-2">Marketing Executive</h5>
-                            <p class="job-meta text-muted mb-2">
-                                <i class="fa-solid fa-building"></i> Hospitality |
-                                <i class="fa-solid fa-location-dot"></i> Dhaka |
-                                <i class="fa-solid fa-clock"></i> Full Time
-                            </p>
-                            <p class="job-desc">We are looking for an energetic Marketing Executive to support branding campaigns across our hotels and resorts.</p>
-                        </div>
-                        <div class="text-end">
-                            <button 
-                                class="th-btn mb-0 style1 th-btn-icon apply-btn"
-                                data-bs-toggle="modal" 
-                                data-bs-target="#applyModal"
-                                data-id="1"
-                                data-title="Marketing Executive">
-                                Apply Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Another Job Card -->
-                <div class="col-md-6">
-                    <div class="job-card p-4 bg-gray shadow-sm rounded h-100 d-flex flex-column justify-content-between">
-                        <div>
-                            <h5 class="job-title mb-2">Finance Officer</h5>
-                            <p class="job-meta text-muted mb-2">
-                                <i class="fa-solid fa-building"></i> Finance |
-                                <i class="fa-solid fa-location-dot"></i> Chattogram |
-                                <i class="fa-solid fa-clock"></i> Full Time
-                            </p>
-                            <p class="job-desc">Join our finance team to support auditing, compliance, and reporting across multiple Century Group industries.</p>
-                        </div>
-                        <div class="text-end">
-                            <button 
-                                class="th-btn mb-0 style1 th-btn-icon apply-btn"
-                                data-bs-toggle="modal" 
-                                data-bs-target="#applyModal"
-                                data-id="2"
-                                data-title="Finance Officer">
-                                Apply Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <div class="row gy-4" id="jobs-container">
+                <!-- Dynamic jobs will be injected here -->
             </div>
+            <div id="pagination" class="mt-4"></div>
+
         </div>
     </section>
 
@@ -257,13 +201,177 @@ Application Modal v1 (Stacked Fields)
     </script>
 
     <script>
-    document.querySelectorAll(".apply-btn").forEach(btn => {
-        btn.addEventListener("click", function() {
-            document.getElementById("job_id").value = this.dataset.id;
-            document.getElementById("job_title").value = this.dataset.title;
+        let allJobs = [];
+        let currentPage = 1;
+        const pageSize = 16; // 8 x 2 per page
+
+        // Fetch all jobs once
+        async function loadJobs() {
+            try {
+                const res = await fetch("http://localhost/century-group/api/jobs.php?action=list", { cache: "no-store" });
+                const json = await res.json();
+                if (!json.success) return alert(json.message);
+
+                allJobs = json.data;
+
+                // Populate dropdowns dynamically
+                populateFilters(allJobs);
+
+                // Show jobs initially
+                applyFilters();
+            } catch (err) {
+                console.error("Error loading jobs:", err);
+            }
+        }
+
+        // Populate dropdown filters dynamically
+        function populateFilters(jobs) {
+            const deptSelect = document.getElementById("filter-department");
+            const locSelect  = document.getElementById("filter-location");
+            const typeSelect = document.getElementById("filter-jobtype");
+
+            function setOptions(select, values, label) {
+                const unique = [...new Set(values.filter(Boolean))].sort();
+                select.innerHTML = `<option value="">${label}</option>` +
+                    unique.map(v => `<option value="${v}">${v}</option>`).join("");
+            }
+
+            setOptions(deptSelect, jobs.map(j => j.department_name), "Department");
+            setOptions(locSelect,  jobs.map(j => j.location), "Location");
+            setOptions(typeSelect, jobs.map(j => j.job_type), "Job Type");
+        }
+
+        // Render job cards with pagination
+        function renderJobs(jobs) {
+            const container = document.getElementById("jobs-container");
+            container.innerHTML = "";
+
+            if (jobs.length === 0) {
+                container.innerHTML = `<p class="text-center text-muted">No jobs found.</p>`;
+                document.getElementById("pagination").innerHTML = "";
+                return;
+            }
+
+            const totalPages = Math.ceil(jobs.length / pageSize);
+            if (currentPage > totalPages) currentPage = totalPages;
+
+            const start = (currentPage - 1) * pageSize;
+            const paginatedJobs = jobs.slice(start, start + pageSize);
+
+            paginatedJobs.forEach(job => {
+                container.innerHTML += `
+                    <div class="col-md-6">
+                        <div class="job-card p-4 bg-gray shadow-sm rounded h-100 d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="job-title mb-2">${job.title}</h5>
+                                <p class="job-meta text-muted mb-2">
+                                    <i class="fa-solid fa-building"></i> ${job.department_name} |
+                                    <i class="fa-solid fa-location-dot"></i> ${job.location} |
+                                    <i class="fa-solid fa-clock"></i> ${job.job_type}
+                                </p>
+                                <p class="job-desc">${job.description}</p>
+                            </div>
+                            <div class="text-end">
+                                <button 
+                                    class="th-btn mb-0 style1 th-btn-icon apply-btn"
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#applyModal"
+                                    data-id="${job.id}"
+                                    data-title="${job.title}">
+                                    Apply Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Re-bind Apply buttons
+            document.querySelectorAll(".apply-btn").forEach(btn => {
+                btn.addEventListener("click", function() {
+                    document.getElementById("job_id").value = this.dataset.id;
+                    document.getElementById("job_title").value = this.dataset.title;
+                });
+            });
+
+            renderPagination(totalPages);
+        }
+
+        // Render pagination
+        function renderPagination(totalPages) {
+            const pagination = document.getElementById("pagination");
+            pagination.innerHTML = "";
+
+            if (totalPages <= 1) return;
+
+            let html = `<nav><ul class="pagination justify-content-center">`;
+
+            html += `<li class="page-item ${currentPage === 1 ? "disabled" : ""}">
+                        <a class="page-link" href="#" onclick="changePage(${currentPage - 1});return false;">Prev</a>
+                    </li>`;
+
+            for (let i = 1; i <= totalPages; i++) {
+                html += `<li class="page-item ${i === currentPage ? "active" : ""}">
+                            <a class="page-link" href="#" onclick="changePage(${i});return false;">${i}</a>
+                        </li>`;
+            }
+
+            html += `<li class="page-item ${currentPage === totalPages ? "disabled" : ""}">
+                        <a class="page-link" href="#" onclick="changePage(${currentPage + 1});return false;">Next</a>
+                    </li>`;
+
+            html += `</ul></nav>`;
+            pagination.innerHTML = html;
+        }
+
+        // Change page
+        function changePage(page) {
+            currentPage = page;
+            applyFilters();
+        }
+
+        // Apply filters in memory
+        function applyFilters() {
+            let dept = document.getElementById("filter-department").value.toLowerCase();
+            let loc  = document.getElementById("filter-location").value.toLowerCase();
+            let type = document.getElementById("filter-jobtype").value.toLowerCase();
+            let search = document.getElementById("filter-search").value.toLowerCase();
+
+            let filtered = allJobs.filter(job => {
+                return (!dept || job.department_name.toLowerCase().includes(dept)) &&
+                    (!loc || job.location.toLowerCase().includes(loc)) &&
+                    (!type || job.job_type.toLowerCase().includes(type)) &&
+                    (!search || job.title.toLowerCase().includes(search));
+            });
+
+            renderJobs(filtered);
+        }
+
+        // Attach filter events
+        ["filter-department", "filter-location", "filter-jobtype"].forEach(id => {
+            document.getElementById(id).addEventListener("change", () => {
+                currentPage = 1;
+                applyFilters();
+            });
         });
-    });
+        document.getElementById("filter-search").addEventListener("input", debounce(() => {
+            currentPage = 1;
+            applyFilters();
+        }, 300));
+
+        // Debounce helper
+        function debounce(fn, delay) {
+            let timer;
+            return function(...args) {
+                clearTimeout(timer);
+                timer = setTimeout(() => fn.apply(this, args), delay);
+            };
+        }
+
+        // Init
+        document.addEventListener("DOMContentLoaded", loadJobs);
     </script>
+
 
 </body>
 
