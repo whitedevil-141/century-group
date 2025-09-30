@@ -109,11 +109,20 @@ class IndustryController {
             }
         }
 
-        $stmt = $this->pdo->prepare("INSERT INTO industries (name, slug, description, icon, image_url, status) VALUES (?,?,?,?,?,1)");
-        $stmt->execute([$name, $slug, $desc, $iconPath, json_encode($images)]);
+        try {
+            $stmt = $this->pdo->prepare("INSERT INTO industries (name, slug, description, icon, image_url, status) VALUES (?,?,?,?,?,1)");
+            $stmt->execute([$name, $slug, $desc, $iconPath, json_encode($images)]);
 
-        $this->jsonResponse(true, "Industry added");
+            $this->jsonResponse(true, "Industry added");
+        } catch (PDOException $e) {
+            if ($e->getCode() == 23000) {
+                $this->jsonResponse(false, "Slug already exists. Please choose a different name.");
+            } else {
+                $this->jsonResponse(false, "Database error: " . $e->getMessage());
+            }
+        }
     }
+
 
     public function edit($post, $files) {
         $id   = (int) $post['id'];

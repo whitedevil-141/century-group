@@ -1864,6 +1864,10 @@ textarea.is-invalid {
 }
 
 /*------------------- 2.4. Slick Slider -------------------*/
+.swiper-wrapper {
+    display: flex;
+    align-items: stretch; /* make all cards the same height */
+}
 .swiper-wrapper.row {
   -webkit-flex-wrap: nowrap;
       -ms-flex-wrap: nowrap;
@@ -17963,6 +17967,18 @@ span.select2-selection.select2-selection--single:focus {
 
 /*------------------- 4.00. Service -------------------*/
 /* Service Area 1 ---------------------------------- */
+.service-card {
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 665px;
+  border: 1px solid #97AE97;
+  border-radius: 16px;
+  padding: 24px 24px 18px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
 .service-card .service-card-icon img {
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -17986,7 +18002,11 @@ span.select2-selection.select2-selection--single:focus {
   color: var(--white-color);
   opacity: 0.8;
 }
-
+.service-card:hover:hover{
+  transform: translateY(-10px);
+  box-shadow: 0px 15px 30px rgba(176, 198, 176, 0.5);
+  border-color: transparent;
+}
 .service-card:hover .service-card-icon img {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
