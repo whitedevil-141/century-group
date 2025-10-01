@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . '/../config/auth.php';
 secureSessionStart();
-requireLogin();
-
+requireAuth(['admin','mod', 'hr']);
+require_once __DIR__ . '/../config/permissions.php';
 // Connect to DB
 require_once __DIR__ . '/../config/db.php';
 $db = Database::connect();
@@ -50,11 +50,29 @@ $messagesCount = $db->query("SELECT COUNT(*) FROM messages")->fetchColumn();
 <div class="sidebar">
     <h3 style="padding:10px;">Century Admin</h3>
     <ul>
-        <li><a href="dashboard.php" class="active">Dashboard</a></li>
-        <li><a href="industries.php">Industries</a></li>
-        <li><a href="jobs.php">Jobs</a></li>
-        <li><a href="applications.php">Applications</a></li>
-        <li><a href="messages.php">Messages</a></li>
+        <li><a href="dashboard.php" class="<?= basename($_SERVER['PHP_SELF'])=='dashboard.php'?'active':'' ?>">Dashboard</a></li>
+
+        <?php if (can('industries','read')): ?>
+            <li><a href="industries.php" class="<?= basename($_SERVER['PHP_SELF'])=='industries.php'?'active':'' ?>">Industries</a></li>
+        <?php endif; ?>
+
+        <?php if (can('jobs','read')): ?>
+            <li><a href="jobs.php" class="<?= basename($_SERVER['PHP_SELF'])=='jobs.php'?'active':'' ?>">Jobs</a></li>
+        <?php endif; ?>
+
+        <?php if (can('applications','read')): ?>
+            <li><a href="applications.php" class="<?= basename($_SERVER['PHP_SELF'])=='applications.php'?'active':'' ?>">Applications</a></li>
+        <?php endif; ?>
+
+        <?php if (can('messages','read')): ?>
+            <li><a href="messages.php" class="<?= basename($_SERVER['PHP_SELF'])=='messages.php'?'active':'' ?>">Messages</a></li>
+        <?php endif; ?>
+
+        <?php if (can('users','read')): ?>
+            <li><a href="users.php" class="<?= basename($_SERVER['PHP_SELF'])=='users.php'?'active':'' ?>">Users</a></li>
+        <?php endif; ?>
+
+
         <li><a href="logout.php">Logout</a></li>
     </ul>
 </div>
@@ -63,23 +81,34 @@ $messagesCount = $db->query("SELECT COUNT(*) FROM messages")->fetchColumn();
     <p>Select a section from the sidebar to manage data.</p>
     <!-- Overview Cards -->
     <div class="card-container">
-        
-        <div class="card">
-            <h3><?= $industriesCount; ?></h3>
-            <a href="industries.php">Industries</a>
-        </div>
-        <div class="card">
-            <h3><?= $jobsCount; ?></h3>
-            <a href="jobs.php">Jobs</a>
-        </div>
-        <div class="card">
-            <h3><?= $applicationsCount; ?></h3>
-            <a href="applications.php">Applications</a>
-        </div>
-        <div class="card">
-            <h3><?= $messagesCount; ?></h3>
-            <p>Messages</p>
-        </div>
+        <?php if (can('industries','read')): ?>
+            <div class="card">
+                <h3><?= $industriesCount; ?></h3>
+                <a href="industries.php">Industries</a>
+            </div>
+        <?php endif; ?>
+
+        <?php if (can('jobs','read')): ?>
+            <div class="card">
+                <h3><?= $jobsCount; ?></h3>
+                <a href="jobs.php">Jobs</a>
+            </div>
+        <?php endif; ?>
+
+        <?php if (can('applications','read')): ?>
+            <div class="card">
+                <h3><?= $applicationsCount; ?></h3>
+                <a href="applications.php">Applications</a>
+            </div>
+        <?php endif; ?>
+
+        <?php if (can('messages','read')): ?>
+            <div class="card">
+                <h3><?= $messagesCount; ?></h3>
+                <a href="messages.php">Messages</a>
+            </div>
+        <?php endif; ?>
+
     </div>
 </div>
 </body>

@@ -1,5 +1,10 @@
 <?php
-session_start();
+require_once __DIR__ . '/../config/auth.php';
+require_once __DIR__ . '/../config/permissions.php';
+
+secureSessionStart();
+requireAuth(); // must be logged in
+
 header("Content-Type: application/json");
 
 require_once __DIR__ . '/../config/db.php';
@@ -85,10 +90,32 @@ $controller = new JobController();
 $action = $_POST['action'] ?? $_GET['action'] ?? null;
 
 switch ($action) {
-    case 'list':   $controller->list(); break;
-    case 'get':    $controller->get((int)($_GET['id'] ?? 0)); break;
-    case 'add':    $controller->add($_POST); break;
-    case 'edit':   $controller->edit($_POST); break;
-    case 'delete': $controller->delete((int)($_GET['id'] ?? 0)); break;
-    default:       echo json_encode(["success"=>false,"message"=>"Invalid action"]); exit;
+    case 'list':
+        enforcePermission('jobs','read');
+        $controller->list();
+        break;
+
+    case 'get':
+        enforcePermission('jobs','read');
+        $controller->get((int)($_GET['id'] ?? 0));
+        break;
+
+    case 'add':
+        enforcePermission('jobs','create');
+        $controller->add($_POST);
+        break;
+
+    case 'edit':
+        enforcePermission('jobs','update');
+        $controller->edit($_POST);
+        break;
+
+    case 'delete':
+        enforcePermission('jobs','delete');
+        $controller->delete((int)($_GET['id'] ?? 0));
+        break;
+
+    default:
+        echo json_encode(["success"=>false,"message"=>"Invalid action"]);
+        exit;
 }

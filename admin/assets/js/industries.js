@@ -26,6 +26,20 @@ async function loadIndustries() {
 
     json.data.forEach(ind => {
         const tr = document.createElement("tr");
+
+        let actions = "";
+
+        if (permissions.industries.includes("update")) {
+            actions += `<button type="button" onclick="editIndustry(${ind.id})">Edit</button>`;
+            actions += `<button type="button" onclick="toggleIndustry(${ind.id})">
+                            ${ind.status == 1 ? "Disable" : "Enable"}
+                        </button>`;
+        }
+
+        if (permissions.industries.includes("delete")) {
+            actions += `<button type="button" onclick="deleteIndustry(${ind.id})">Delete</button>`;
+        }
+
         tr.innerHTML = `
             <td>${ind.name}</td>
             <td>${ind.slug}</td>
@@ -34,12 +48,9 @@ async function loadIndustries() {
             <td>${ind.description || ""}</td>
             <td>${ind.status == 1 ? "✅ Active" : "❌ Inactive"}</td>
             <td>${ind.created_at}</td>
-            <td>
-                <button type="button" onclick="editIndustry(${ind.id})">Edit</button>
-                <button type="button" onclick="toggleIndustry(${ind.id})">${ind.status == 1 ? "Disable" : "Enable"}</button>
-                <button type="button" onclick="deleteIndustry(${ind.id})">Delete</button>
-            </td>
+            <td>${actions || "—"}</td>
         `;
+
         tbody.appendChild(tr);
     });
 }

@@ -39,7 +39,7 @@ class Database {
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 username VARCHAR(100) UNIQUE,
                 password VARCHAR(255),
-                role ENUM('admin','editor','hr') DEFAULT 'admin',
+                role ENUM('admin','mod','hr') DEFAULT 'hr',
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )",
 

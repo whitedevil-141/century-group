@@ -22,16 +22,20 @@ async function loadJobs() {
 
     json.data.forEach(job => {
         const tr = document.createElement("tr");
+        let actions = "";
+        if (permissions.jobs.includes("update")) {
+            actions += `<button type="button" onclick="editJob(${job.id})">Edit</button>`;
+        }
+        if (permissions.jobs.includes("delete")) {
+            actions += `<button type="button" onclick="deleteJob(${job.id})">Delete</button>`;
+        }
         tr.innerHTML = `
             <td>${job.title}</td>
             <td>${job.department_name || ""}</td>
             <td>${job.location || ""}</td>
             <td>${job.job_type}</td>
             <td>${job.created_at}</td>
-            <td>
-                <button type="button" onclick="editJob(${job.id})">Edit</button>
-                <button type="button" onclick="deleteJob(${job.id})">Delete</button>
-            </td>
+            <td>${actions}</td>
         `;
         tbody.appendChild(tr);
     });

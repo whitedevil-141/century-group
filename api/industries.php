@@ -1,5 +1,10 @@
 <?php
-session_start();
+require_once __DIR__ . '/../config/auth.php';
+require_once __DIR__ . '/../config/permissions.php';
+
+secureSessionStart();
+requireAuth(); // basic login check
+
 header("Content-Type: application/json");
 
 require_once __DIR__ . '/../config/db.php';
@@ -238,17 +243,42 @@ $controller = new IndustryController();
 $action = $_POST['action'] ?? $_GET['action'] ?? null;
 
 switch ($action) {
-    case 'list':   $controller->list(); break;
-    case 'get':    $controller->get((int)($_GET['id'] ?? 0)); break;
-    case 'add':    $controller->add($_POST, $_FILES); break;
-    case 'edit':   $controller->edit($_POST, $_FILES); break;
-    case 'delete': $controller->delete((int)($_GET['id'] ?? 0)); break;
-    case 'toggle': $controller->toggle((int)($_GET['id'] ?? 0)); break;
-    case 'delete_image': 
+    case 'list':
+        enforcePermission('industries','read');
+        $controller->list();
+        break;
+
+    case 'get':
+        enforcePermission('industries','read');
+        $controller->get((int)($_GET['id'] ?? 0));
+        break;
+
+    case 'add':
+        enforcePermission('industries','create');
+        $controller->add($_POST, $_FILES);
+        break;
+
+    case 'edit':
+        enforcePermission('industries','update');
+        $controller->edit($_POST, $_FILES);
+        break;
+
+    case 'delete':
+        enforcePermission('industries','delete');
+        $controller->delete((int)($_GET['id'] ?? 0));
+        break;
+
+    case 'toggle':
+        enforcePermission('industries','update');
+        $controller->toggle((int)($_GET['id'] ?? 0));
+        break;
+
+    case 'delete_image':
+        enforcePermission('industries','update');
         $controller->deleteImage((int)($_GET['id'] ?? 0), (int)($_GET['imgKey'] ?? -1));
         break;
-    default:       
-        echo json_encode(["success"=>false,"message"=>"Invalid action"]); 
+
+    default:
+        echo json_encode(["success"=>false,"message"=>"Invalid action"]);
         exit;
 }
-

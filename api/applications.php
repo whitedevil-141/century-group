@@ -1,10 +1,12 @@
 <?php
-session_start();
+require_once __DIR__ . '/../config/auth.php';
+require_once __DIR__ . '/../config/permissions.php';
+
+secureSessionStart();
+requireAuth(); // must be logged in
+
 header("Content-Type: application/json");
-if (!isset($_SESSION['user'])) {
-    echo json_encode(["success" => false, "message" => "Unauthorized"]);
-    exit;
-}
+
 
 require_once __DIR__ . '/../config/db.php';
 
@@ -68,17 +70,21 @@ $controller = new ApplicationController();
 $action = $_POST['action'] ?? $_GET['action'] ?? null;
 
 switch ($action) {
-    case "list": 
-        $controller->list(); 
+    case "list":
+        enforcePermission('applications','read');
+        $controller->list();
         break;
+
     case "update_status":
+        enforcePermission('applications','update');
         $controller->updateStatus(
-            (int)($_POST['id'] ?? 0), 
-            $_POST['status'] ?? "Pending", 
+            (int)($_POST['id'] ?? 0),
+            $_POST['status'] ?? "Pending",
             $_POST['message'] ?? ""
         );
         break;
-    default: 
-        echo json_encode(["success"=>false,"message"=>"Invalid action"]); 
+
+    default:
+        echo json_encode(["success"=>false,"message"=>"Invalid action"]);
         exit;
 }
